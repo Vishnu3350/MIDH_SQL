@@ -15,7 +15,7 @@ INSERT INTO dept (dept_id, dept_name) VALUES
 DESC Dept;
 
 SELECT * FROM dept;
-show tables;
+
 CREATE TABLE employee
 (
     emp_id INT PRIMARY KEY,
@@ -151,5 +151,69 @@ select e.emp_name, d.dept_name from dept as d inner join employee as e on d.dept
 
 # left join
 -- select col.name from table_1 left join table_2 on table1.col_name = table2.col_name;
+
+-- DAY3 
+
+-- update
+update employee set emp_salary = 75000 where emp_id = 1;
+select * from employee;
+
+update employee set emp_age = 22 where emp_id = 3;
+select * from employee;
+
+
+
+# Transactions
+-- DEF: group of sql statements execute as a single unit
+# Net Banking through UPI
+# 150 - 100
+# 0 + 100
+# update
+start transaction;
+update employee set emp_salary = emp_salary - 10000 where emp_id = 1;
+select * from employee;
+
+update employee set emp_salary = emp_salary + 10000 where emp_id = 2;
+select * from employee;
+commit;
+
+select * from employee;
+rollback;
+
+# Alter
+-- add
+alter table employee add emp_mobilenumber int;
+
+
+-- modify
+alter table employee modify emp_name varchar(100);
+
+
+-- rename
+alter table employee rename column emp_mobilenumber to mobile_number;
+
+
+-- delete
+delete from employee where emp_id = 12;
+
+
+
+
+
+select user, host from mysql.user;
+
+create user 'vishnu'@'%' identified by 'vishnu@123';
+
+show grants for 'vishnu'@'%';
+
+grant select on office_db. * to 'vishnu'@'%'; 
+
+
+
+
+
+
+
+
 
 
